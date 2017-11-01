@@ -4,13 +4,27 @@ public class basemodel {
 
 	String message;
 	int code;
+	String ipaddress;
 
 	
 	public basemodel() {
 		super();
 	}
 
+
 	
+	public String getIpaddress() {
+		return ipaddress;
+	}
+
+
+
+	public void setIpaddress(String ipaddress) {
+		this.ipaddress = ipaddress;
+	}
+
+
+
 	public int getCode() {
 		return code;
 	}

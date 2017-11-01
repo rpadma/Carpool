@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
-                </div><a href="#" class="already">You already have an account? Login here.</a></form>
+                </div><a href="index.jsp" class="already">You already have an account? Login here.</a></form>
         </div>
     </div>
     

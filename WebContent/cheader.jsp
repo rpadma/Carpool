@@ -24,13 +24,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav">
-                    <c:if test="${sessionScope.user==null}">
-                        <li role="presentation"><a href="home.jsp" onclick="return false;">Home </a></li>
-                        </c:if>
-                        <c:if test="${sessionScope.user!=null}">
                         <li role="presentation"><a href="home.jsp">Home </a></li>
-                        </c:if>
-                        
                         <li role="presentation"><a href="contactus.jsp">Contact us</a></li>
                         <li role="presentation"><a href="aboutus.jsp">About us</a></li>
                     </ul>
