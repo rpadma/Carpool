@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="cheader.jsp" />
-      
-    
+ 	   
     <div class="login-clean">
  
  
@@ -28,7 +27,7 @@
             
             <div class="checkbox col-md-12">
                 <label>
-                    <input type="checkbox">Car Available</label>
+                    <input type="checkbox" name="Availability">Car Available</label>
             </div>
             <div class="col-md-12">
                 <label>Vacant Seats</label>

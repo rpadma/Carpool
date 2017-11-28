@@ -27,6 +27,14 @@
                         <li role="presentation"><a href="home.jsp">Home </a></li>
                         <li role="presentation"><a href="contactus.jsp">Contact us</a></li>
                         <li role="presentation"><a href="aboutus.jsp">About us</a></li>
+                         <c:if test="${sessionScope.user!=null}">
+                    	
+                   <li role="presentation"><a href="mytrips">My trips</a></li>
+                        <c:if test="${sessionScope.user.role=='admin'}">
+                    	<li role="presentation"><a href="dashboard.jsp">Dashboard</a></li>
+                    </c:if>
+                    </c:if>
+                       
                     </ul>
                     
                     <c:if test="${sessionScope.user==null}">
