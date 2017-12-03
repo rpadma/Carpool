@@ -25,16 +25,17 @@
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav">
                         <li role="presentation"><a href="home.jsp">Home </a></li>
+                        <li role="presentation"><a href="mytrips">My trips</a></li>
+                        <c:if test="${sessionScope.user.role=='user'}">
                         <li role="presentation"><a href="contactus.jsp">Contact us</a></li>
-                        <li role="presentation"><a href="aboutus.jsp">About us</a></li>
+                        </c:if>
                          <c:if test="${sessionScope.user!=null}">
-                    	
-                   <li role="presentation"><a href="mytrips">My trips</a></li>
                         <c:if test="${sessionScope.user.role=='admin'}">
                     	<li role="presentation"><a href="dashboard.jsp">Dashboard</a></li>
                     </c:if>
                     </c:if>
-                       
+                     <li role="presentation"><a href="aboutus.jsp">About us</a></li>
+                            
                     </ul>
                     
                     <c:if test="${sessionScope.user==null}">
@@ -45,6 +46,7 @@
                     
                     <c:if test="${sessionScope.user!=null}">
                     	 <p class="navbar-text navbar-right actions"><a class="navbar-link login" href="index?action=logout">Log Out</a>
+                  
                     </c:if>
                    
                     

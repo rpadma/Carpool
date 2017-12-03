@@ -4,11 +4,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="assets/js/Chart.min.js"></script>
   
-<div style="width:200;height:200">
-	<canvas id="myChart" width="200" height="200"></canvas>
+<div  width="200" height="200"  >
+	<canvas id="mycha" width="200" height="200"></canvas>
 </div>  
 
 <script>
+
 $.ajax({
     url: "dashboard",
     method: "POST",
@@ -23,7 +24,7 @@ $.ajax({
 }
 });
 
-var ctx = document.getElementById("myChart").getContext('2d');
+var ctx = document.getElementById("mycha").getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
