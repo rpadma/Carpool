@@ -42,11 +42,9 @@ public class EmailListServlet extends HttpServlet {
             String to = email;
             String from = "likhithchinnam@gmail.com";
             String subject = "Welcome to our Pet Store";
-            String body = "Dear Customer"  + ",\n\n"
-                    + "Thanks for shopping at the Pet Store."                   
-                    + "Have a great day and thanks again!\n\n"
-                    + "likhith chinnam\n"
-                    + "UNC Charlotte";
+            String body = "Dear "+email + ",\n\n"
+                    + "Message from Carpool user :"+ from                   
+                    + " ";
             boolean isBodyHTML = false;
 
             try {

@@ -10,36 +10,37 @@
             <div >
                 <div class="col-md-12">
                     <label>Source</label>
-                    <input class="form-control" type="text"  name="Source" placeholder="Source">
+                    <input class="form-control" type="text"  name="Source" placeholder="Source" required>
                 </div>
                 <div class="col-md-12">
                     <label>Destination</label>
-                    <input class="form-control" type="text"  name="Destination" placeholder="Destination">
+                    <input class="form-control" type="text"  name="Destination" placeholder="Destination" required>
                 </div>
                 <div class="col-md-12">
                     <label>Date</label>
-                    <input class="form-control" type="date"  name="date" placeholder="date">
+                    <input class="form-control" type="date"  name="date" placeholder="date" required>
                 </div>
                 <div class="col-md-12">
                     <label>Description</label>
-                    <input class="form-control" type="text" name="Description" placeholder="Description">
+                    <input class="form-control" type="text" name="Description" placeholder="Description" required>
                 </div>
             
             <div class="checkbox col-md-12">
                 <label>
-                    <input type="checkbox" name="Availability">Car Available</label>
+                    <input type="checkbox" name="Availability" >Car Available</label>
             </div>
             <div class="col-md-12">
                 <label>Vacant Seats</label>
-                <input class="form-control" type="number" name="VacantSeat" >
+                <input class="form-control" type="number" name="VacantSeat" required>
             </div>
             <div class="col-md-12">
                 <label>Estimated Cost ($)</label>
-                <input class="form-control" type="number" name="estimatedcost">
+                <input class="form-control" type="number" name="estimatedcost" required>
             </div>
       </div>
+      
       <div class="form-group">
-            <button class="btn btn-primary btn-block" type="submit">Save</button>
+                 <button class="btn btn-primary btn-block" type="submit">Save</button>
         </div>
         </form>
     </div>

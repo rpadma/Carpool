@@ -1,30 +1,28 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.logindao;
-import dao.registerdao;
+import dao.tripsdao;
 import model.usermodel;
 
 /**
- * Servlet implementation class register
+ * Servlet implementation class TripMembers
  */
-@WebServlet("/register")
-public class register extends HttpServlet {
+@WebServlet("/TripMembers")
+public class TripMembers extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static registerdao register = new registerdao();
-	public static usermodel user = new usermodel();
-	public static logindao login = new logindao();
-    
+	private static tripsdao trip = new tripsdao(); 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public register() {
+    public TripMembers() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,7 +32,9 @@ public class register extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String trip_id = request.getParameter("trip_id");
+		System.out.println("trip id: "+trip_id);
+		request.getRequestDispatcher("home.jsp").forward(request, response);
 	}
 
 	/**
@@ -42,25 +42,11 @@ public class register extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		long trip_id = Long.parseLong(request.getParameter("action"));
+		ArrayList<usermodel> users = trip.getUsers(trip_id);
+		request.setAttribute("users",users);
+		request.getRequestDispatcher("mytrips").forward(request, response);
 		
-		String email = (String) request.getParameter("email");
-		String password = (String) request.getParameter("password");
-	
-		String url = "";
-		
-		if(register.checkusername(email)){
-			request.setAttribute("valmsg", "exist");
-			
-			url = "/register.jsp";
-		}
-		else{
-			url = "/home.jsp"; 
-			
-			register.registeruser(email, password);
-			user = login.validatelogin(email, password);
-			request.getSession().setAttribute("user", user);
-		}
-		getServletContext().getRequestDispatcher(url).forward(request, response);
 	}
 
 }

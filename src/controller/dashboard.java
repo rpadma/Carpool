@@ -9,7 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.contactdao;
 import dao.dashboarddao;
+import model.contactusmodel;
+import model.tripsmodel;
+import model.usermodel;
+
 import com.google.gson.Gson;
 import java.io.OutputStream;
 /**
@@ -19,6 +24,7 @@ import java.io.OutputStream;
 public class dashboard extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static dashboarddao dash = new dashboarddao();
+	private static contactdao contact = new contactdao();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -33,26 +39,38 @@ public class dashboard extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		System.out.println("In get dashboard");
 		doPost(request, response);
-	}
+	} 
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ArrayList<Long> users = dash.getUsersTrips();
-		ArrayList<Object> listresult=new ArrayList<Object>();
+		usermodel user =  (usermodel) request.getSession().getAttribute("user");
+		
+		if(user.getRole().equals("admin"))
+		{
+		
+		System.out.println("In contact dao");
+		ArrayList<contactusmodel> allcontact = contact.allcontactus();
+		if(allcontact.size()==0){
+			request.setAttribute("cont_flag", "NoMessages");
+		}
+		else{
+			request.setAttribute("cont_flag", allcontact);
+		}
+		System.out.println(allcontact.size());
+		request.getRequestDispatcher("dashboard.jsp").forward(request, response);
+	}
+	else
+	{
+		request.getRequestDispatcher("notauthorized.jsp").forward(request, response);
 
-		listresult.add("values1");
-		listresult.add("values2");
-		listresult.add("values3");
-		listresult.add("values4");
-		response.setContentType("application/json");
-		OutputStream outputStream= response.getOutputStream();
-		Gson gson=new Gson();       
-		outputStream.write(gson.toJson(listresult).getBytes());
-		outputStream.flush();
+	}
+		
 	}
 
 }

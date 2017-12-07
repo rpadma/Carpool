@@ -2,7 +2,7 @@
 <c:import url="cheader.jsp" />
  <div class="login-clean">
  		<c:if test="${requestScope.user!=null}">
-	  		<p class="help-block">${requestScope.user.message}</p>
+	  		<h3 class="help-block">${requestScope.user.message}</h3>
   		</c:if>
         <form method="post" action="index">
             <h2 class="sr-only">Login Form</h2>

@@ -13,25 +13,35 @@
     <link rel="stylesheet" href="assets/css/Registration-Form-with-Photo.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/Footer-Clean.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
     <div>
         <nav class="navbar navbar-default navigation-clean-button">
             <div class="container">
-                <div class="navbar-header"><a class="navbar-brand navbar-link" href="#">Carpool</a>
+            	<c:if test="${sessionScope.user!=null}">
+            		<div class="navbar-header"><a class="navbar-brand navbar-link" href="home.jsp">Carpool</a>
+                </c:if>
+                <c:if test="${sessionScope.user==null}">
+            		<div class="navbar-header"><a class="navbar-brand navbar-link" href="#">Carpool</a>
+                </c:if>
                     <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                 </div>
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav">
+                        <c:if test="${sessionScope.user!=null}">
                         <li role="presentation"><a href="home.jsp">Home </a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.user!=null}">
                         <li role="presentation"><a href="mytrips">My trips</a></li>
+                        </c:if>
                         <c:if test="${sessionScope.user.role=='user'}">
                         <li role="presentation"><a href="contactus.jsp">Contact us</a></li>
                         </c:if>
                          <c:if test="${sessionScope.user!=null}">
                         <c:if test="${sessionScope.user.role=='admin'}">
-                    	<li role="presentation"><a href="dashboard.jsp">Dashboard</a></li>
+                    	<li role="presentation"><a href="dashboard">Dashboard</a></li>
                     </c:if>
                     </c:if>
                      <li role="presentation"><a href="aboutus.jsp">About us</a></li>

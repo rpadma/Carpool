@@ -11,7 +11,23 @@ public class tripsmodel {
 	int cost;
 	String desc;
 	long user_id;
+	long trip_id;
+	String user_email;
 	
+	
+	
+	public String getUser_email() {
+		return user_email;
+	}
+	public void setUser_email(String user_email) {
+		this.user_email = user_email;
+	}
+	public long getTrip_id() {
+		return trip_id;
+	}
+	public void setTrip_id(long trip_id) {
+		this.trip_id = trip_id;
+	}
 	public String getDesc() {
 		return desc;
 	}

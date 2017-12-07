@@ -15,14 +15,18 @@ $(document).ready(function(){
 		else{
 			$("tr").show();
 		}
-	})
+	});
+	
+	
 });
 </script>
+
 
 <div class="login-clean">
 
 <c:if test="${requestScope.mytrips_flag=='notrips'}">
 	<div class="container">
+
 		<div class="col-md-offset-4 col-md-5 well well-lg">
 			<div style="font-size:30px" class="col-md-offset-3">
 				You added no trips
@@ -31,8 +35,16 @@ $(document).ready(function(){
 	</div>
 </c:if>
 
+<c:if test="${requestScope.users!=null}">
+	<c:forEach var="user" items="${requestScope.users}">
+     	<p>${user.email}</p>
+      </c:forEach>
+</c:if>
+
 <c:if test="${requestScope.mytrips_flag!='notrips'}">
-	<div class="container">     
+	<div class="container">  
+	<h1>My Trips</h1>   
+	</br></br></br></br>
 	<label><input id="car_availability" type="checkbox" value=""> Car availability</label>
 	       
   <table class="table table-hover table-striped">
@@ -50,6 +62,8 @@ $(document).ready(function(){
     <tbody>
       	<c:forEach var="trip" items="${mytrips_flag}">
      		<tr>
+     		
+		        <form method="post" action="TripMembers">
      			<td>${trip.src}</td>
      			<td>${trip.dest}</td>
      			<td>${trip.date}</td>
@@ -57,6 +71,13 @@ $(document).ready(function(){
 		        <td>${trip.vacant_seats}</td>
 		        <td>${trip.cost}</td>
 		        <td>${trip.desc}</td>
+		        <td>
+			        <input type="hidden" name="action" value="${trip.trip_id}">
+			        <button class="btn btn-primary button-mem">View members</button>
+		      
+		        
+		        </td>
+		          </form>
 	      	</tr>
       </c:forEach>
     </tbody>
